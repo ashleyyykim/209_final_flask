@@ -101,12 +101,16 @@
     <section class="hypothesis reveal" id="hypothesis-2">
       <div class="section-inner">
         <span class="hypo-number">02</span>
-        <h2>Hypothesis Two Heading Placeholder</h2>
+        <h2>Teams whose role players increase their PIE from the regular season to the playoffs tend to win more playoff games</h2>
         <p>
-          Placeholder narration for the second hypothesis. Describe what pattern you
-          expected to find in the data and why, before revealing the chart below.
+          This section examines whether teams that got stronger role-player contributions in the playoffs
+          tended to advance further. The combined view brings together the scatterplot and boxplot so the
+          reader can see both the team-level relationship and the broader distribution of role-player impact
+          in one place.
         </p>
-        <div id="chart-hypothesis-2" class="chart-mount"></div>
+        <div class="chart-block">
+          <div id="chart-hypothesis-2" class="chart-mount"></div>
+        </div>
       </div>
     </section>
 
@@ -120,10 +124,8 @@
           Placeholder narration for the third hypothesis. Describe what pattern you
           expected to find in the data and why, before revealing the chart below.
         </p>
-        <div id="chart-hypothesis-3" class="chart-filled">
-          <iframe src="{{ url_for('static', filename='chart_hypothesis_3.html') }}"
-                  style="width:100%; height:700px; border:none;"></iframe>
-        </div>
+        <div id="chart-hypothesis-3" class="chart-mount"></div>
+      </div>
     </section>
 
   </main>
@@ -132,6 +134,18 @@
     <p>W209 Data Visualization &middot; UC Berkeley MIDS &middot; Summer 2026</p>
     <p class="site-footer-names">Nedim Hodzic &nbsp;/&nbsp; Charles De Wilde &nbsp;/&nbsp; Ashley Kim</p>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <script>
+    vegaEmbed(
+      '#chart-hypothesis-2',
+      "{{ url_for('static', filename='chart_combined-scatterplot_boxplot-nedim.json') }}",
+      { actions: false }
+    ).catch(console.error);
+  </script>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
