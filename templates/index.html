@@ -87,12 +87,13 @@
     <section class="hypothesis reveal" id="hypothesis-1">
       <div class="section-inner">
         <span class="hypo-number">01</span>
-        <h2>Hypothesis One Heading Placeholder</h2>
+        <h2>Playoffs VS Regular Season PIE Differences</h2>
         <p>
-          Placeholder narration for the first hypothesis. Describe what pattern you
-          expected to find in the data and why, before revealing the chart below.
+          How the NBA Playoffs impact the top 10 Highest rated Players by PIE
         </p>
-        <div id="chart-hypothesis-1" class="chart-mount"></div>
+        <div id="chart-hypothesis-1" class="chart-filled">
+          <iframe src="{{ url_for('static', filename='chart_hypothesis_1.html') }}"
+            style="width:100%; height:700px; border:none;"></iframe>
       </div>
     </section>
 
