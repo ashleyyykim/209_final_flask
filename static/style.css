@@ -369,16 +369,18 @@ p {
 
 .chart-filled {
   margin-top: 2.5rem;
-  border: 2px dashed var(--wood-mid);
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid var(--wood-mid);
   border-radius: 10px;
   background: rgba(185, 121, 63, 0.06);
   padding: 1rem;
   overflow: hidden;
-  width: 100%;
-  max-width: none;
+  width: fit-content;
+  max-width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 /* ---------- Footer ---------- */
