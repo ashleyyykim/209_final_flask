@@ -88,19 +88,22 @@
 
     <div class="court-divider" aria-hidden="true"></div>
 
-<section class="hypothesis reveal" id="hypothesis-1">
-  <div class="section-inner">
-    <span class="hypo-number">01</span>
-    <h2>Playoffs VS Regular Season PIE Differences</h2>
-    <p>
-      How the NBA Playoffs impact the top 10 Highest rated Players by PIE
-    </p>
-    <div id="chart-hypothesis-1" class="chart-filled">
-      <iframe src="{{ url_for('static', filename='chart_hypothesis_1.html') }}"
-              style="width:100%; height:700px; border:none;"></iframe>
-    </div>
-  </div>
-</section>
+    <section class="hypothesis reveal" id="hypothesis-1">
+      <div class="section-inner">
+        <span class="hypo-number">01</span>
+        <h2>Playoffs VS Regular Season PIE Differences</h2>
+      <p>
+        How the NBA Playoffs impact the top 10 Highest rated Players by PIE
+        </p>
+        <div id="chart-hypothesis-1" class="chart-filled"></div>
+        <script>
+          vegaEmbed("#chart-hypothesis-1",
+            "{{ url_for('static', filename='chart_hypothesis_1.json') }}",
+            { actions: false }
+          ).catch(console.error);
+        </script>
+      </div>
+    </section>
 
     <div class="court-divider" aria-hidden="true"></div>
 
@@ -114,9 +117,14 @@
           reader can see both the team-level relationship and the broader distribution of role-player impact
           in one place.
         </p>
-        <div class="chart-block">
-          <div id="chart-hypothesis-2" class="chart-mount"></div>
-        </div>
+        <div id="chart-hypothesis-2" class="chart-filled"></div>
+        <script>
+          vegaEmbed(
+            '#chart-hypothesis-2',
+            "{{ url_for('static', filename='chart_combined-scatterplot_boxplot-nedim.json') }}",
+            { actions: false }
+          ).catch(console.error);
+        </script>
       </div>
     </section>
 
@@ -127,13 +135,18 @@
         <span class="hypo-number">03</span>
         <h2>Do Stars Rise to the Moment in Playoff Wins?</h2>
         <p>
-          The intuition is simple: when a team wins a playoff series, its star must have risen to the occasion. This would mean outplaying his regular-season self while the losing team's star faltered. This visualization sets out to explore whether the defining star on each team (its highest regular-season PIE player) really does perform better, relative to his own regular season, in series his team wins versus loses during the playoffs.
+          The intuition is simple: when a team wins a playoff series, its star must have risen to the occasion. 
+          This would mean outplaying his regular-season self while the losing team's star faltered. This 
+          visualization sets out to explore whether the defining star on each team (its highest regular-season 
+          PIE player) really does perform better, relative to his own regular season, in series his team wins 
+          versus loses during the playoffs.
         </p>
         <div id="chart-hypothesis-3" class="chart-filled"></div>
         <script>
           vegaEmbed("#chart-hypothesis-3",
-            "{{ url_for('static', filename='chart_hypothesis_3.json') }}")
-            .catch(console.error);
+            "{{ url_for('static', filename='chart_hypothesis_3.json') }}",
+            { actions: false }
+          ).catch(console.error);
         </script>
       </div>
     </section>
@@ -144,14 +157,6 @@
     <p>W209 Data Visualization &middot; UC Berkeley MIDS &middot; Summer 2026</p>
     <p class="site-footer-names">Nedim Hodzic &nbsp;/&nbsp; Charles De Wilde &nbsp;/&nbsp; Ashley Kim</p>
   </footer>
-
-  <script>
-    vegaEmbed(
-      '#chart-hypothesis-2',
-      "{{ url_for('static', filename='chart_combined-scatterplot_boxplot-nedim.json') }}",
-      { actions: false }
-    ).catch(console.error);
-  </script>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

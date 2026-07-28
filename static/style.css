@@ -345,26 +345,7 @@ p {
 .hypothesis p {
   font-size: 1.05rem;
   color: var(--ink);
-  max-width: 780px;
-}
-
-.chart-mount {
-  margin-top: 2.5rem;
-  min-height: 360px;
-  border: 2px dashed var(--wood-mid);
-  border-radius: 10px;
-  background: rgba(185, 121, 63, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--wood-mid);
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-}
-
-.chart-mount::after {
-  content: "Chart mounts here";
+  max-width: 900px;
 }
 
 .chart-filled {
@@ -375,7 +356,7 @@ p {
   border-radius: 10px;
   background: rgba(185, 121, 63, 0.06);
   padding: 1rem;
-  overflow: hidden;
+  overflow-x: auto;
   width: fit-content;
   max-width: 100%;
   display: flex;
