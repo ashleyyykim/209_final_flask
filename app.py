@@ -5,5 +5,13 @@ app = Flask(__name__)
 def w209():
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/usability')
+def usability():
+    return render_template('usability.html')
+
 if __name__ == '__main__':
     app.run()

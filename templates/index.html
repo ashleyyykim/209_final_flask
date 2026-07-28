@@ -17,10 +17,19 @@
 </head>
 <body>
 
+  <nav class="top-nav" aria-label="Site navigation">
+    <a href="/" class="top-nav-brand">NBA PLAYOFF PERFORMANCE</a>
+    <ul class="top-nav-links">
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/usability">Usability</a></li>
+    </ul>
+  </nav>
+
   <nav class="dot-nav" aria-label="Section navigation">
     <a href="#hero" class="dot" data-label="Top"></a>
-    <a href="#metrics" class="dot" data-label="Metrics"></a>
     <a href="#intro" class="dot" data-label="Overview"></a>
+    <a href="#metrics" class="dot" data-label="Metrics"></a>
     <a href="#hypothesis-1" class="dot" data-label="Hypothesis 01"></a>
     <a href="#hypothesis-2" class="dot" data-label="Hypothesis 02"></a>
     <a href="#hypothesis-3" class="dot" data-label="Hypothesis 03"></a>
@@ -47,42 +56,85 @@
 
   <main>
 
-    <section class="metrics-card reveal" id="metrics">
-      <div class="metrics-card-inner">
-        <span class="metrics-badge">Read This First</span>
-        <h2>Understanding the Context & Metrics</h2>
-        <div class="metrics-grid">
-          <div class="metrics-item">
-            <h3>How are the Playoffs Structured?</h3>
-            <p>
-              Placeholder: ...
-            </p>
-          </div>
-          <div class="metrics-item">
-            <h3>What is PIE?</h3>
-            <p>
-              Placeholder: PIE (Player Impact Estimate) is a single-number stat that
-              boils down a player's box-score contributions &mdash; points, rebounds,
-              assists, steals, blocks, turnovers, and shooting efficiency &mdash; into
-              one percentage that reflects their overall statistical footprint in a
-              game. Explain the formula and what counts as a "good" PIE here.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <div class="court-divider" aria-hidden="true"></div>
 
     <section class="intro reveal" id="intro">
       <div class="section-inner">
         <h2>Project Overview</h2>
         <p>
-          Placeholder intro text. Summarize the motivation for this project, the
-          questions being explored, and the dataset(s) used. A couple sentences on
-          scope (seasons covered, players included, playoffs vs. regular season)
-          would go here.
+          Every time a superstar's team loses in the playoffs, the discourse writes itself. Did he
+          choke, or did his supporting cast no-show? It's one of the oldest arguments in basketball,
+          and it gets rehashed every single postseason for whichever star's team went home early that
+          year. This project checks whether an argument like that actually holds up in the numbers,
+          using PIE (Player Impact Estimate), the NBA's own measure of a player's overall contribution
+          to a game. We pulled player, team, and series-level data from the NBA Stats API across
+          multiple seasons and built every hypothesis on this site around that one shared metric.
         </p>
+        <p>We approach the question at three scales, each one narrowing the lens further:</p>
+        <ol class="scale-list">
+          <li><strong>Elite players.</strong> Do the league's highest regular-season performers stay elite once the playoffs begin?</li>
+          <li><strong>Role players.</strong> Do teams whose supporting cast holds or raises its PIE in the playoffs tend to win more games?</li>
+          <li><strong>The defining star.</strong> Does each team's top player perform better in the series his team wins than in the ones it loses?</li>
+        </ol>
+        <p>The same question, asked at three magnifications.</p>
+      </div>
+    </section>
+
+    <div class="court-divider" aria-hidden="true"></div>
+
+    <section class="metrics-card reveal" id="metrics">
+      <div class="metrics-card-inner">
+        <h2>Understanding the Context & Metrics</h2>
+        <div class="metrics-grid">
+          <div class="metrics-item">
+            <h3>How are the Playoffs Structured?</h3>
+            <ol class="playoff-steps">
+              <li>
+                <span class="step-num">1</span>
+                <span class="step-label">First<br>Round</span>
+              </li>
+              <li>
+                <span class="step-num">2</span>
+                <span class="step-label">Conf.<br>Semis</span>
+              </li>
+              <li>
+                <span class="step-num">3</span>
+                <span class="step-label">Conf.<br>Finals</span>
+              </li>
+              <li>
+                <span class="step-num">4</span>
+                <span class="step-label">NBA<br>Finals</span>
+              </li>
+            </ol>
+            <dl class="term-defs">
+              <div class="term-defs-item">
+                <dt>Round</dt>
+                <dd>One series per bracket slot, shown above.</dd>
+              </div>
+              <div class="term-defs-item">
+                <dt>Series</dt>
+                <dd>Best-of-seven games between two teams; first to 4 wins advances.</dd>
+              </div>
+              <div class="term-defs-item">
+                <dt>Game</dt>
+                <dd>One individual matchup.</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="metrics-item">
+            <h3>What is PIE?</h3>
+            <p class="metrics-lead">A single number for how much of a <strong>game</strong> one player was responsible for.</p>
+            <p>
+              PIE folds a player's full box score, both ends of the floor, into one percentage. Every
+              chart here uses it instead of raw stats like points, since it accounts for defense and
+              playmaking too, not just scoring.
+            </p>
+            <p class="metrics-link">
+              <a href="/about#data-source">Full formula and reasoning on the About page &rarr;</a>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -152,11 +204,6 @@
     </section>
 
   </main>
-
-  <footer class="site-footer">
-    <p>W209 Data Visualization &middot; UC Berkeley MIDS &middot; Summer 2026</p>
-    <p class="site-footer-names">Nedim Hodzic &nbsp;/&nbsp; Charles De Wilde &nbsp;/&nbsp; Ashley Kim</p>
-  </footer>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

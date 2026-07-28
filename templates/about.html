@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About &middot; NBA Playoff Performance Analysis</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="top-nav" aria-label="Site navigation">
+    <a href="/" class="top-nav-brand">NBA PLAYOFF PERFORMANCE</a>
+    <ul class="top-nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about" class="active">About</a></li>
+      <li><a href="/usability">Usability</a></li>
+    </ul>
+  </nav>
+
+  <nav class="dot-nav" aria-label="Section navigation">
+    <a href="#project-overview" class="dot" data-label="Project Overview"></a>
+    <a href="#intended-audience" class="dot" data-label="Intended Audience"></a>
+    <a href="#data-source" class="dot" data-label="Data Source"></a>
+    <a href="#tools-used" class="dot" data-label="Tools Used"></a>
+    <a href="#team" class="dot" data-label="Team"></a>
+  </nav>
+
+  <header class="page-header" id="top">
+    <div class="page-header-inner">
+      <h1>About This Project</h1>
+      <p>What we measured, where the data comes from, and how and who built the site.</p>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="court-divider" aria-hidden="true"></div>
+
+    <section class="page-section reveal" id="project-overview">
+      <div class="page-section-inner">
+        <h2>Project Overview</h2>
+        <div class="stat-row">
+          <div class="stat-item">
+            <span class="stat-num">12</span>
+            <span class="stat-label">Seasons covered</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">175</span>
+            <span class="stat-label">Playoff series</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Hypotheses</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="court-divider" aria-hidden="true"></div>
+
+    <section class="page-section shaded reveal" id="intended-audience">
+      <div class="page-section-inner">
+        <h2>Intended Audience</h2>
+        <p>
+          Built for NBA fans and casual analysts who follow the league but don't necessarily track
+          box-score stats. Basic knowledge of the playoffs and the stars is assumed. PIE isn't, so
+          every chart explains it before asking you to read it. No stats background required, nothing
+          oversimplified to compensate.
+        </p>
+      </div>
+    </section>
+
+    <div class="court-divider" aria-hidden="true"></div>
+
+    <section class="page-section reveal" id="data-source">
+      <div class="page-section-inner">
+      <h2>Data Source</h2>
+
+      <h3>Source</h3>
+      <p>
+        All data comes from the official <strong>NBA Stats API</strong>, pulled with the
+        <strong><code>nba_api</code></strong> Python package
+      </p>
+
+      <h3>Metric</h3>
+      <p>
+        Every chart on this site is built around Player Impact Estimate (PIE), the NBA's own
+        single-number measure of how much a player contributed to a given game.
+      </p>
+      <details>
+        <summary>How PIE is Calculated</summary>
+        <div class="pie-equation">
+          <span class="pie-label">PIE&nbsp;=</span>
+          <span class="fraction">
+            <span class="fraction-num">PTS + FGM + FTM &minus; FGA &minus; FTA + DREB + 0.5&times;OREB + AST + STL + 0.5&times;BLK &minus; PF &minus; TOV</span>
+            <span class="fraction-den">same sum, across both teams combined, in that game</span>
+          </span>
+        </div>
+        <p>
+          In plain terms: PIE is what percentage of everything that happened in the game,
+          across both teams, one player was responsible for.
+          <p class="source-note">
+            Source: <a href="https://www.nba.com/stats/help/glossary#pie" target="_blank" rel="noopener">NBA.com Stat Glossary, "PIE"</a>
+          </p>
+        </p>
+      </details>
+
+      <h3>Why PIE</h3>
+      <p>
+        A single raw stat like points or rebounds only tells one side of the story, a player
+        can score a lot while turning the ball over or getting outplayed on defense. 
+        Composite alternatives like PER or Win Shares fix that, but they lean on season-long 
+        league averages and involve a proprietary calculation that aren't in the NBA API. 
+        PIE folds the full box score, both ends of the floor, into one number that's published 
+        directly by the NBA, computed fresh per game, and pulled from the same API this project already uses, so nothing here depends on a formula this project can't verify.
+      </p>
+      </div>
+    </section>
+
+    <div class="court-divider" aria-hidden="true"></div>
+
+    <section class="page-section shaded reveal" id="tools-used">
+      <div class="page-section-inner">
+        <h2>Tools Used</h2>
+      <h3>Data Processing</h3>
+      <p>
+        All data comes from the official <strong>NBA Stats API</strong>, pulled with the
+        <strong>nba_api</strong> Python package and cleaned with <strong>pandas</strong>. Play-in
+        games are filtered out before any playoff-level analysis, and player and team records are
+        joined by season and team to build the player, team, and series-level views each
+        hypothesis needs.
+      </p>
+
+      <h3>Visualization Design and Implementation</h3>
+      <p>
+        Every chart is authored in <strong>Altair</strong>, which compiles to
+        <strong>Vega-Lite</strong>, and saved as a standalone JSON spec loaded on the page with
+        <strong>vega-embed</strong>.
+      </p>
+
+      <h3>Website and Deployment</h3>
+      <p>
+        The site itself is a <strong>Flask</strong> app: templates render the page shell and chart
+        containers, and static files hold the CSS, JavaScript, and saved chart specs. The repo
+        lives on <strong>GitHub</strong> and auto-deploys to <strong>Vercel</strong> on every push
+        to main, so changes go live without a separate build step.
+      </p>
+    </div>
+  </section>
+
+    <div class="court-divider" aria-hidden="true"></div>
+
+    <section class="page-section reveal" id="team">
+      <div class="page-section-inner">
+        <h2>Team</h2>
+        <div class="team-grid">
+          <div class="team-card">
+            <span class="initials">NH</span>
+            <h3>Nedim Hodzic</h3>
+            <p>nedimhodzic@berkeley.edu</p>
+          </div>
+          <div class="team-card">
+            <span class="initials">CD</span>
+            <h3>Charles De Wilde</h3>
+            <p>charles_dewilde@berkeley.edu</p>
+          </div>
+          <div class="team-card">
+            <span class="initials">AK</span>
+            <h3>Ashley Kim</h3>
+            <p>ashleyk823@berkeley.edu</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
