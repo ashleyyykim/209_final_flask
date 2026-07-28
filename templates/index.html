@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The PIE Factor — NBA Data Visualization</title>
+  <title>NBA Playoff Performance Analysis</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
 
@@ -93,7 +97,7 @@
     </p>
     <div id="chart-hypothesis-1" class="chart-filled">
       <iframe src="{{ url_for('static', filename='chart_hypothesis_1.html') }}"
-              style="width:640px; max-width:100%; height:640px; border:none;"></iframe>
+              style="width:100%; height:700px; border:none;"></iframe>
     </div>
   </div>
 </section>
@@ -121,12 +125,16 @@
     <section class="hypothesis reveal" id="hypothesis-3">
       <div class="section-inner">
         <span class="hypo-number">03</span>
-        <h2>Hypothesis Three Heading Placeholder</h2>
+        <h2>Do Stars Rise to the Moment in Playoff Wins?</h2>
         <p>
-          Placeholder narration for the third hypothesis. Describe what pattern you
-          expected to find in the data and why, before revealing the chart below.
+          The intuition is simple: when a team wins a playoff series, its star must have risen to the occasion. This would mean outplaying his regular-season self while the losing team's star faltered. This visualization sets out to explore whether the defining star on each team (its highest regular-season PIE player) really does perform better, relative to his own regular season, in series his team wins versus loses during the playoffs.
         </p>
-        <div id="chart-hypothesis-3" class="chart-mount"></div>
+        <div id="chart-hypothesis-3" class="chart-filled"></div>
+        <script>
+          vegaEmbed("#chart-hypothesis-3",
+            "{{ url_for('static', filename='chart_hypothesis_3.json') }}")
+            .catch(console.error);
+        </script>
       </div>
     </section>
 
@@ -136,10 +144,6 @@
     <p>W209 Data Visualization &middot; UC Berkeley MIDS &middot; Summer 2026</p>
     <p class="site-footer-names">Nedim Hodzic &nbsp;/&nbsp; Charles De Wilde &nbsp;/&nbsp; Ashley Kim</p>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
   <script>
     vegaEmbed(
