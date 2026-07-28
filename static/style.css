@@ -548,6 +548,90 @@ p {
   align-items: center;
 }
 
+.chart-guide {
+  margin: 1.5rem 0 0;
+  border: 1px solid var(--wood-mid);
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem;
+  background: rgba(185, 121, 63, 0.06);
+  max-width: 100%;
+}
+
+.chart-guide summary {
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--accent);
+  list-style: none;
+}
+
+.chart-guide summary::-webkit-details-marker {
+  display: none;
+}
+
+.chart-guide summary::before {
+  content: "+ ";
+  display: inline-block;
+  width: 1em;
+  color: var(--accent);
+}
+
+.chart-guide[open] summary::before {
+  content: "\2212 ";
+}
+
+.chart-guide[open] summary {
+  margin-bottom: 1rem;
+}
+
+.chart-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 700px) {
+  .chart-guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-guide-col h4 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin: 0 0 0.6rem;
+}
+
+.chart-guide-col ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.chart-guide-col li {
+  font-size: 0.92rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.chart-guide-col li::marker {
+  color: var(--accent);
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.task-item p {
+  font-size: 0.95rem;
+  margin: 0 0 0.4rem;
+}
+
 /* =========================================================
    4. About / Usability shared page layout
    ========================================================= */

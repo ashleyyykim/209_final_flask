@@ -192,7 +192,37 @@
           visualization sets out to explore whether the defining star on each team (its highest regular-season 
           PIE player) really does perform better, relative to his own regular season, in series his team wins 
           versus loses during the playoffs.
+          <br>
+          Explore the chart below and see what you conclude. If you want a starting point, the tasks 
+          below offer a few prompts to work from.
         </p>
+        <details class="chart-guide">
+          <summary>How to Read This Chart</summary>
+          <div class="chart-guide-grid">
+            <div class="chart-guide-col">
+              <h4>The Scatter</h4>
+              <ul>
+                <li>Each dot is one playoff series.</li>
+                <li><strong>Metric</strong> = playoff PIE minus that player's own regular-season PIE.</li>
+                <li><strong>X-axis:</strong> winning team's star's Metric. <strong>Y-axis:</strong> losing team's star's Metric.</li>
+                <li>Dashed diagonal marks equal performance for the two stars.</li>
+                <li>Gray triangles at the edge mark series whose value falls outside the visible range.</li>
+                <li><strong>Click</strong> any dot to open its matchup on the right. Use the <strong>Season</strong> and <strong>Playoff Round</strong> filters below graph to narrow the view.</li>
+              </ul>
+            </div>
+            <div class="chart-guide-col">
+              <h4>Game-by-Game Detail</h4>
+              <ul>
+                <li>Shows the series you clicked, one point per game.</li>
+                <li>Double-click to reset.</li>
+                <li>Winner's star in <strong>blue</strong>, loser's star in <strong>gray</strong>.</li>
+                <li><strong>Y-axis:</strong> each star's performance vs. his own regular season, that game.</li>
+                <li><strong>X-axis:</strong> game number in the series.</li>
+                <li>Use it to see whether the gap held steady or swung late.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
         <div id="chart-hypothesis-3" class="chart-filled"></div>
         <script>
           vegaEmbed("#chart-hypothesis-3",
@@ -200,6 +230,26 @@
             { actions: false }
           ).catch(console.error);
         </script>
+        <details class="chart-guide">
+          <summary>Tasks You Can Try</summary>
+          <div class="task-list">
+            <div class="task-item">
+              <p><strong>Form an impression.</strong> Look at the chart for a minute before doing anything else. What's it plotting, and what's the first thing you notice about where the dots sit?</p>
+            </div>
+            <div class="task-item">
+              <p><strong>Settle an argument.</strong> Does the team with the better-performing star always win the series? Use the diagonal line and the count annotations in the corners to check.</p>
+            </div>
+            <div class="task-item">
+              <p><strong>Find the standout.</strong> Find the dot farthest from the diagonal, that's the series with the biggest gap between the two stars. Hover over it to see which matchup it was.</p>
+            </div>
+            <div class="task-item">
+              <p><strong>Investigate a series.</strong> Click any dot to open its game-by-game detail on the right. If you're hunting for a specific matchup, the Season and Playoff Round filters are below the chart.</p>
+            </div>
+            <div class="task-item">
+              <p><strong>Report a finding.</strong> Based on what you've explored, what's the one sentence you'd tell a friend about how stars perform in the playoffs?</p>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
 
