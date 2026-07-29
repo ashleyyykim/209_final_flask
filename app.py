@@ -9,9 +9,5 @@ def w209():
 def about():
     return render_template('about.html')
 
-@app.route('/usability')
-def usability():
-    return render_template('usability.html')
-
 if __name__ == '__main__':
     app.run()
