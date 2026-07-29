@@ -172,10 +172,10 @@ p {
   top: 50%;
   width: 34px;
   height: 34px;
-  border: 2px solid var(--wood-mid);
-  border-radius: 50%;
-  background: var(--cream);
   transform: translate(-50%, -50%);
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTgiIGZpbGw9IiNlODU5MGMiIHN0cm9rZT0iIzdhNGEyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48cGF0aCBkPSJNMiwyMCBIMzggTTIwLDIgVjM4IE03LDcgQzEzLDEzIDEzLDI3IDcsMzMgTTMzLDcgQzI3LDEzIDI3LDI3IDMzLDMzIiBmaWxsPSJub25lIiBzdHJva2U9IiM3YTRhMjQiIHN0cm9rZS13aWR0aD0iMS41Ii8+PC9zdmc+");
+  background-size: contain;
+  border-radius: 50%;
 }
 
 /* ---------- Scroll reveal ---------- */
